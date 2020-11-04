@@ -1,7 +1,11 @@
+#!/usr/bin/env node
+
 import gpml2pvjson from 'gpml2pvjson/es5/index.js'
 import fs from 'fs'
 import util from 'util'
 import fetch from 'node-fetch'
+
+const info = JSON.parse(fs.readFileSync('package.json', 'utf8'))
 
 const { GPML2013aToPVJSON: parseGpml } = gpml2pvjson
 
@@ -14,10 +18,22 @@ function promisifyStream (stream) {
 
 ;(async function main (file = '-') {
   let input
-  if (file !== '-' && fs.existsSync(file)) {
-    input = fs.createReadStream(file, { encoding: 'utf8' })
-  } else {
+  if (file === '-') {
     input = process.stdin
+  } else if (fs.existsSync(file)) {
+    input = fs.createReadStream(file, { encoding: 'utf8' })
+  } else if (file === '-v' || file === '--version') {
+    console.log(`GPML-Rhea ${info.version}`)
+    console.log('GPML 2013a')
+    process.exit(0)
+  } else {
+    console.log(`GPML-Rhea
+
+  gpml-rhea [file]             Read file
+  gpml-rhea -                  Read from standard in
+  gpml-rhea -v, --version      Get the version
+  gpml-rhea -h, --help         Print this message`)
+    process.exit(0)
   }
 
   const pvjson = await promisifyStream(parseGpml(input))

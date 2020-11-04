@@ -4,6 +4,9 @@
   "description": "Annotate GPML pathways with Rhea identifiers",
   "type": "module",
   "main": "index.js",
+  "bin": {
+    "gpml-rhea": "index.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
