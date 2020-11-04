@@ -1,0 +1,31 @@
+{
+  "name": "@larsgw/gpml-rhea",
+  "version": "0.0.0",
+  "description": "Annotate GPML pathways with Rhea identifiers",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/larsgw/gpml-rhea.git"
+  },
+  "keywords": [
+    "gpml",
+    "pathway",
+    "chemistry",
+    "biology",
+    "rhea"
+  ],
+  "author": "Lars Willighagen (https://larsgw.github.io)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/larsgw/gpml-rhea/issues"
+  },
+  "homepage": "https://github.com/larsgw/gpml-rhea#readme",
+  "dependencies": {
+    "gpml2pvjson": "^4.1.12",
+    "node-fetch": "^2.6.1"
+  }
+}
