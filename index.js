@@ -12,9 +12,15 @@ function promisifyStream (stream) {
   })
 }
 
-;(async function main () {
-  const gpml = fs.createReadStream('WP5019_113587.gpml', { encoding: 'utf8' })
-  const pvjson = await promisifyStream(parseGpml(gpml))
+;(async function main (file = '-') {
+  let input
+  if (file !== '-' && fs.existsSync(file)) {
+    input = fs.createReadStream(file, { encoding: 'utf8' })
+  } else {
+    input = process.stdin
+  }
+
+  const pvjson = await promisifyStream(parseGpml(input))
   const { pathway, entitiesById: entities } = pvjson
 
   // List interactions
@@ -154,7 +160,7 @@ SELECT DISTINCT ?reaction ?reactionEquation WHERE {
     console.log('---------------------------------------------')
     console.log()
   }
-})().catch(e => {
+})(...process.argv.slice(2)).catch(e => {
   console.error(e)
   process.exit(1)
 })
