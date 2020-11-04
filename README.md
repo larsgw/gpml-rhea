@@ -2,13 +2,28 @@
 
 Collect chemical reactions from a GPML file and look for matching Rhea equations.
 
-Requires:
+Pathway requirements:
   - MIM interactions compatible with https://github.com/BiGCAT-UM/WikiPathwaysInteractions/tree/master/FilesGPML#readme
   - Metabolites with ChEBI identifiers
 
 ## Install
 
+System requirements:
+  - [Node.js v14](https://nodejs.org/en/download/)
+  - npm (usually comes with Node.js)
+
+### Installing Node.js on Linux
+
+    sudo apt-get install nodejs-dev node-gyp libssl1.0-dev
+    sudo apt install npm
+
+### Installing GPML-Rhea
+
     npm install --global @larsgw/gpml-rhea
+
+Alternatively, run "without" installing:
+
+    npx @larsgw/gpml-rhea [options]
 
 ## Usage
 
