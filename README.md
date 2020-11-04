@@ -6,9 +6,20 @@ Requires:
   - MIM interactions compatible with https://github.com/BiGCAT-UM/WikiPathwaysInteractions/tree/master/FilesGPML#readme
   - Metabolites with ChEBI identifiers
 
-## Install
+## System requirements:
+OS: Linux
+Packages needed:
+- npm
+```
+sudo apt-get install nodejs-dev node-gyp libssl1.0-dev
+sudo apt install npm
 
+```
+
+## Install this repository
+```
     npm install --global @larsgw/gpml-rhea
+```
 
 ## Usage
 
